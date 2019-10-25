@@ -37,6 +37,10 @@ h1 {
 }
 #board > div {
     background-color: var(--light);
+    font-size: 10rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:var(--medium);
     width: 10rem;
     height: 10rem;
     display: flex;
