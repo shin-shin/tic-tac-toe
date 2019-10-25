@@ -54,7 +54,7 @@ button#resetBtn {
     height: auto;
     font-size: 2rem;
     background-color: var(--light);
-    border: 5px solid var(--medium);
+    border: .5rem solid var(--medium);
     color:var(--medium);
     text-transform: uppercase;
     font-weight: bold;
