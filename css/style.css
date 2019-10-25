@@ -89,6 +89,7 @@ button#resetBtn {
     font-weight: bold;
     padding: 20px 0;
     align-self: center;
+    outline: none;
 }
 button#resetBtn:hover {
     background-color: var(--medium);
