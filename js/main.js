@@ -20,7 +20,8 @@ init();
 
 function makeMove(event){
     //test if it works
-    event.target.style.backgroundColor = "red";
+    event.target.style.backgroundColor = "#FE506D";
+    event.target.textContent = "x";
     //playBoard = cleanBoard.push(event.target);
     console.log("move " + event.target);
 }
