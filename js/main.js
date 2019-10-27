@@ -2,16 +2,17 @@
 const XBOX = 1;
 const OBOX = -1;
 const EMPTY = 0;
-const grid = 3;
+const GRID = 3;
+const GRID7 = 7;
+const GRID13 = 13;
 
 
 //*----- app's state (variables) -----
-let board, playBoard, resetGameBtn, xTurn, oTurn;
+let board, playBoard, boxNum, resetGameBtn, xTurn, oTurn;
 
 //*----- cached element references ---
 board = document.getElementById("board");
 resetGameBtn = document.getElementById("resetBtn");
-boxes = document.getElementById("board").children;
 //*----- event listeners -------------
 board.addEventListener("click", makeMove);
 resetGameBtn.addEventListener("click", resetGame);
@@ -21,14 +22,17 @@ init();
 
 function makeMove(event){
     let move = event.target;
-
+    let boxNum = playBoard.indexOf(move);
+    move.textContent = "0"
+    console.log(boxNum);
     //array of (#board children elements numbered) method indexOf(event.target)
     //for loop through #board 
     //test if it works
     move.style.backgroundColor = "#FE506D";
-    move.textContent = "x";
-    //playBoard = cleanBoard.push(event.target);
-    console.log("move " + event.target);
+    //move.textContent = "x";
+    //playBoard.push(move);
+    //console.log("move " + move);
+    //console.log(playBoard);
 }
 
 function winCheck(){
@@ -44,10 +48,13 @@ function render(){
 
 }
 function init(){
-    playBoard = new Array();
-    for(var i = 0; i <= Math.pow(grid, 2); i++){
-        board += "<div>0</div";
+    // playBoard = new Array();
+    for(var i = 0; i < Math.pow(GRID, 2); i++){
+        board.innerHTML += "<div class=\"zero\"></div";
     }
+    playBoard = Array.from(document.getElementById("board").children);
+
+    console.log(playBoard);
 }
 
 console.log("hello from JS");

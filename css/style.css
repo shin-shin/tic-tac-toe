@@ -9,7 +9,7 @@
 }
 body {
     margin: 0;
-    padding: 50px;
+    padding:0 50px 50px;
     background-color: var(--dark);
     font-family: 'Lato', sans-serif;
     display: flex;
@@ -45,8 +45,18 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+#board .xBox{
+    
+}
+#board .xBox{
+    
+}
+#board .zero{
+    
+    
+}
 #turn {
-    margin-top: 60px;
+    margin-top: 30px;
     font-size: 4rem;
     color: var(--medium);
     text-transform: uppercase;
@@ -78,7 +88,7 @@ h1 {
 }
 
 button#resetBtn {
-    margin-top: 60px;
+    margin-top: 30px;
     width: 32rem;
     height: auto;
     font-size: 2rem;
@@ -95,3 +105,31 @@ button#resetBtn:hover {
     background-color: var(--medium);
     color: var(--light);
 }
+#size {
+    margin-top: 30px;
+    font-size: 2rem;
+    color: var(--medium);
+    text-transform: uppercase;
+    font-weight: bold;
+    align-self: center;
+    grid-gap: 6px;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    grid-gap: .5rem;
+   
+    
+}
+#size >div {
+    width: 10.335rem;
+    height: auto;
+    background-color: var(--light);
+    border: .5rem solid var(--medium);
+    padding: 20px 0;
+    text-align: center;
+
+}
+#size .active {
+    background-color: var(--light);
+    border: .5rem solid var(--medium);
+}
+
