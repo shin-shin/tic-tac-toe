@@ -6,6 +6,7 @@
     --dark: #222222;
     --medium: #666666;
     --light: pink;
+    --accent1: #FE506D;
 }
 body {
     margin: 0;
@@ -53,7 +54,6 @@ h1 {
 }
 #board .zero{
     
-    
 }
 #turn {
     margin-top: 30px;
@@ -66,8 +66,6 @@ h1 {
     display: grid;
     grid-template: 1fr / 1fr 1fr;
     grid-gap: .5rem;
-   
-    
 }
 #turn .xBox, #turn .oBox {
     width: 15.8rem;
@@ -76,7 +74,6 @@ h1 {
     border: .5rem solid var(--medium);
     padding: 20px 0;
     text-align: center;
-
 }
 #turn .oBox .active {
     background-color: var(--light);
@@ -116,8 +113,6 @@ button#resetBtn:hover {
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr;
     grid-gap: .5rem;
-   
-    
 }
 #size >div {
     width: 10.335rem;
@@ -126,10 +121,13 @@ button#resetBtn:hover {
     border: .5rem solid var(--medium);
     padding: 20px 0;
     text-align: center;
-
 }
-#size .active {
-    background-color: var(--light);
+#size>div:hover {
+    background-color: var(--medium);
+    color: var(--light);
+}
+#size .active{
+    background-color: var(--accent1);
     border: .5rem solid var(--medium);
 }
 
