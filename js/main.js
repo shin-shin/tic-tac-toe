@@ -166,7 +166,7 @@ function resetGame(e) {
     header.textContent = "Tic Tac Toe";
     main.setAttribute("id", "")
     win = false;
-
+    main.className = "";
     //size buttons rest
     threeBtn.className ="three";
     sevenBtn.className ="seven";
@@ -180,6 +180,7 @@ function resetGame(e) {
 function resize(e) {
     board.innerHTML = "";
     main.setAttribute("id", "")
+    
     console.log(e.target);
     if(e.target.className === "thirteen"){
         size = 13;
@@ -197,6 +198,7 @@ function resize(e) {
     thirteenBtn.className ="thirteen";
     e.target.className = "active";
     
+    header.textContent = "Tic Tac Toe";
 
     console.log("resize");
 }
@@ -216,6 +218,7 @@ function render(m, w) {
         // let who = turn == 1 ? "X" : "O";
         header.textContent = `${w} won!`;
         header.style.textTransform = "uppercase";
+        main.className = `${w}Won`;
     }
 }
 function init(size = 3) {

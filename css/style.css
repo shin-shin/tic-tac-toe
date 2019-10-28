@@ -26,6 +26,12 @@ body {
     height: 100%;
     width: 100%;
 }
+body.xWon {
+    background: linear-gradient(var(--accent1),var(--dark)); 
+}
+body.oWon {
+    background: linear-gradient(var(--accent2),var(--dark)); 
+}
 h1 {
     text-align: center;
     font-size: 5rem;
