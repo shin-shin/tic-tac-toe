@@ -191,13 +191,13 @@ function resize(e) {
         size = 3;
         console.log(`size ${size}`);
     }
+    init(size);
     threeBtn.className ="three";
     sevenBtn.className ="seven";
     thirteenBtn.className ="thirteen";
     e.target.className = "active";
     
 
-    init(size);
     console.log("resize");
 }
 
@@ -221,6 +221,8 @@ function render(m, w) {
 function init(size = 3) {
     turn = 1;
     grid = size;
+    threeBtn.className ="three active";
+
     if (size === 7){
         main.setAttribute("id", "seven")
     } 
