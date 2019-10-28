@@ -139,7 +139,7 @@ button#resetBtn:hover {
     color: var(--medium);
 }
 #size {
-    visibility: hidden;
+    /* visibility: hidden; */
     margin-top: 30px;
     font-size: 2rem;
     color: var(--medium);

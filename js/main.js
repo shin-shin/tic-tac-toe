@@ -16,6 +16,9 @@ header = document.querySelector("h1");
 board = document.getElementById("board");
 resetGameBtn = document.getElementById("resetBtn");
 size = document.getElementById("size");
+threeBtn = size.querySelector("#size .three");
+sevenBtn = size.querySelector("#size .seven");
+thirteenBtn = size.querySelector("#size .thirteen");
 turnBoxX = document.querySelector("#turnBox .xBox");
 turnBoxO = document.querySelector("#turnBox .oBox");
 //*----- event listeners -------------
@@ -164,6 +167,12 @@ function resetGame(e) {
     main.setAttribute("id", "")
     win = false;
 
+    //size buttons rest
+    threeBtn.className ="three";
+    sevenBtn.className ="seven";
+    thirteenBtn.className ="thirteen";
+    
+
     //console.log(size.children);
     init();
     console.log("reset");
@@ -182,6 +191,9 @@ function resize(e) {
         size = 3;
         console.log(`size ${size}`);
     }
+    threeBtn.className ="three";
+    sevenBtn.className ="seven";
+    thirteenBtn.className ="thirteen";
     e.target.className = "active";
     
 
@@ -223,6 +235,7 @@ function init(size = 3) {
     //     playboard[idx] = 0;
     // })
     //playboard = new Array(9).fill(0);
+    //threeBtn.className ="three active";
 
     render();
 }
