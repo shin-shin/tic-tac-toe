@@ -1,17 +1,18 @@
 //*----- constants -------------------
 const XBOX = 1;
 const OBOX = -1;
-const EMPTY = 0;
-const GRID = 3;
-const GRID7 = 7;
-const GRID13 = 13;
+const EMPTY = 0; 
+//const grid = 3;
+// const grid7 = 7;
+// const grid13 = 13;
 
 
 //*----- app's state (variables) -----
-let size, board, playboard, boxIdx, resetGameBtn, turn, turnBoxX, turnBoxO;
+let grid, size, board, playboard, boxIdx, resetGameBtn, turn, turnBoxX, turnBoxO, win;
 
 //*----- cached element references ---
 main = document.querySelector("body");
+header = document.querySelector("h1");
 board = document.getElementById("board");
 resetGameBtn = document.getElementById("resetBtn");
 size = document.getElementById("size");
@@ -25,7 +26,7 @@ size.addEventListener("click", resize);
 //*----- functions -------------------
 init();
 function build() {
-    for (var i = 0; i < Math.pow(GRID, 2); i++) {
+    for (var i = 0; i < Math.pow(grid, 2); i++) {
         board.innerHTML += "<div></div>";
     }
 }
@@ -45,15 +46,13 @@ function makeMove(e) {
     playboard[boxIdx] = turn;
     turn > 0 ? move.className = "xBox" : move.className = "oBox";
 
-    move.textContent = (turn === 1 ? "x" : "o")
+    let who = (turn === 1 ? "x" : "o")
+    move.textContent = who;
     console.log("turn is " + turn);
     turn = turn * -1;
 
-
-
-
     winCheck();
-    render(move);
+    render(move, who);
 
 }
 
@@ -61,26 +60,32 @@ function winCheck() {
     let i = checkHorizonts();
     if(i >= 0) {
         console.log(`win horizontal: ${i}`);
+        win = true;
         return;
     }
 
     i = checkVerticals();
     if(i >= 0) {
         console.log(`win vertical: ${i}`);
+        win = true;
         return;
     }
     
     i = checkDiagonals();
     if(i >= 0) {
         console.log(`win diagonal: ${i}`);
+        win = true;
         return;
     }
+
+    win = false;
+    return;
 }
 
 function checkHorizonts() {
-    for (let i = 0; i < playboard.length; i += GRID) {
-        //console.log(`i: ${i}, i + GRID: ${i+GRID}`);
-        let sl = playboard.slice(i, i + GRID);
+    for (let i = 0; i < playboard.length; i += grid) {
+        //console.log(`i: ${i}, i + grid: ${i+grid}`);
+        let sl = playboard.slice(i, i + grid);
 
         let sum = sl.reduce(function (acc, curr) {
             if (Number.isInteger(curr)) {
@@ -100,15 +105,15 @@ function checkHorizonts() {
 }
 
 function checkVerticals() {
-    for (let i = 0; i < GRID; i++) {
+    for (let i = 0; i < grid; i++) {
         //console.log(`i: ${i}`);
         let sum = 0;
-        for (let j = 0; j < GRID; j++) {
-            let idx = i + j * GRID
+        for (let j = 0; j < grid; j++) {
+            let idx = i + j * grid
             let curr = playboard[idx]
             //console.log(`idx: ${idx}`);            
             if (Number.isInteger(curr)) {
-                // sum += playboard[i + i * GRID];
+                // sum += playboard[i + i * grid];
                 // console.log(`sum is ${sum}`);
                 
                 sum += curr;
@@ -116,7 +121,7 @@ function checkVerticals() {
 
             }
         }
-        if (Math.abs(sum) === GRID) {
+        if (Math.abs(sum) === grid) {
             console.log("WIN COLUMN")
             return i;
         }
@@ -128,46 +133,59 @@ function checkVerticals() {
 
 function checkDiagonals() {
     sum = 0
-    for (let i = 0; i < GRID*GRID; i+= (GRID+1)) {
+    for (let i = 0; i < grid*grid; i+= (grid+1)) {
         let curr = playboard[i]
         if (Number.isInteger(curr)) {
             sum += curr 
         }
     }
 
-    if (Math.abs(sum) === GRID) {
+    if (Math.abs(sum) === grid) {
         console.log("WIN DIAGONAL")
         return 0;
     }
 
     sum = 0
-    for (let i = GRID-1; i < (GRID*GRID-1); i+= (GRID-1)) {
+    for (let i = grid-1; i < (grid*grid-1); i+= (grid-1)) {
         let curr = playboard[i]
         if (Number.isInteger(curr)) {
             sum += curr 
         }
     }
-    if (Math.abs(sum) === GRID) {
+    if (Math.abs(sum) === grid) {
         console.log("WIN DIAGONAL")
-        return GRID-1;
+        return grid-1;
     }
 }
 
 function resetGame(e) {
     board.innerHTML = "";
+    header.textContent = "Tic Tac Toe";
+    win = false;
 
     init();
     console.log("reset");
 }
 function resize(e) {
     board.innerHTML = "";
+    e.className = "active";
+    if(e.textContent === "13 x 13"){
+        size = 13;
+        console.log(`size ${size}`);
+    } else if (e.textContent === "7 x 7"){
+        size = 7;
+        console.log(`size ${size}`);
+    } else {
+        size = 3;
+        console.log(`size ${size}`);
+    }
     
 
     init(size);
     console.log("resize");
 }
 
-function render(m) {
+function render(m, w) {
     //display the X or O turn
     if (turn === 1) {
         turnBoxO.className = "oBox";
@@ -178,10 +196,21 @@ function render(m) {
     }
 
     //render win
-
+    if(win){
+        // let who = turn == 1 ? "X" : "O";
+        header.textContent = `${w} won!`;
+        header.style.textTransform = "uppercase";
+    }
 }
-function init(size) {
+function init(size = 3) {
     turn = 1;
+    grid = size;
+    if (size === 7){
+        main.className = "seven"
+    } 
+    if (size === 13){
+        main.className = "thirteen"
+    } 
     //body.className = "";
 
     build();

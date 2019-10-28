@@ -9,8 +9,9 @@
     --medium: #666666;
     --light1: #FFE9ED;
     --light2: #D1D1D1;
+    
     --accent1: #FE506D;
-    --accent2: #4FDBA6;
+    --accent2: #50fee1;
 }
 
 
@@ -28,6 +29,7 @@ body {
 h1 {
     text-align: center;
     font-size: 5rem;
+    text-transform: uppercase;;
     color: var(--light1);
 }
 #board {
@@ -40,12 +42,12 @@ h1 {
     grid-gap: .5rem;
     border: .5rem solid var(--medium);
 }
-#seven #board {
+.seven #board {
     grid-template: 1fr 1fr 1fr 1fr 1fr 1fr 1fr/ 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: .5rem;
     border: .5rem solid var(--medium);
 }
-#thirteen #board {
+.thirteen #board {
     grid-template: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: .2rem;
     border: .5rem solid var(--medium);
@@ -62,12 +64,12 @@ h1 {
     align-items: center;
     cursor: pointer;
 }
-#seven #board > div{
+.seven #board > div{
     font-size: 3rem;
     width: 4rem;
     height: 4rem;
 }
-#thirteen #board > div {
+.thirteen #board > div {
     font-size: 2rem;
     width: 2.2rem;
     height: 2.2rem;
@@ -137,6 +139,7 @@ button#resetBtn:hover {
     color: var(--medium);
 }
 #size {
+    visibility: hidden;
     margin-top: 30px;
     font-size: 2rem;
     color: var(--medium);
@@ -166,4 +169,3 @@ button#resetBtn:hover {
     border: .5rem solid var(--medium);
     cursor: default;
 }
-
