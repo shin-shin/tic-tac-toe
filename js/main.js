@@ -161,24 +161,28 @@ function checkDiagonals() {
 function resetGame(e) {
     board.innerHTML = "";
     header.textContent = "Tic Tac Toe";
+    main.setAttribute("id", "")
     win = false;
 
+    //console.log(size.children);
     init();
     console.log("reset");
 }
 function resize(e) {
     board.innerHTML = "";
-    e.className = "active";
-    if(e.textContent === "13 x 13"){
+    main.setAttribute("id", "")
+    console.log(e.target);
+    if(e.target.className === "thirteen"){
         size = 13;
         console.log(`size ${size}`);
-    } else if (e.textContent === "7 x 7"){
+    } else if (e.target.className === "seven"){
         size = 7;
         console.log(`size ${size}`);
     } else {
         size = 3;
         console.log(`size ${size}`);
     }
+    e.target.className = "active";
     
 
     init(size);
@@ -206,12 +210,11 @@ function init(size = 3) {
     turn = 1;
     grid = size;
     if (size === 7){
-        main.className = "seven"
+        main.setAttribute("id", "seven")
     } 
     if (size === 13){
-        main.className = "thirteen"
+        main.setAttribute("id", "thirteen")
     } 
-    //body.className = "";
 
     build();
 
