@@ -35,6 +35,7 @@ function build() {
 }
 
 function makeMove(e) {
+    if (win)return;
     let move = event.target;
     //console.log(`move in makeMove 1 ${move}`);
     let boxIdx = playboard.indexOf(move);
@@ -44,7 +45,7 @@ function makeMove(e) {
         //the box was already played
         return;
     }
-
+ 
     //replace boxIdx position in array with -1/1
     playboard[boxIdx] = turn;
     turn > 0 ? move.className = "xBox" : move.className = "oBox";
@@ -220,6 +221,7 @@ function render(m, w) {
         header.style.textTransform = "uppercase";
         main.className = `${w}Won`;
     }
+    //add stop the game after win (and make boxes unclickable) 
 }
 function init(size = 3) {
     turn = 1;
