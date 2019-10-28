@@ -98,7 +98,7 @@ function checkHorizonts() {
             }
         }, 0)
 
-        if (Math.abs(sum) === 3) {
+        if (Math.abs(sum) === grid) {
             console.log("WIN ROW")
             return i;
         }
